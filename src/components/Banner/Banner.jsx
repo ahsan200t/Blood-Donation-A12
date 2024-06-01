@@ -1,4 +1,5 @@
 import { FaArrowRightLong } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
@@ -9,7 +10,7 @@ const Banner = () => {
           backgroundImage: "url(https://i.ibb.co/WpYPqFd/banner1.jpg)",
         }}
       >
-        <div className="hero-overlay bg-opacity-80"></div>
+        <div className="hero-overlay bg-opacity-80 bg-no-repeat bg-cover"></div>
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-md">
             <h1 className="mb-5 text-3xl font-bold">A Bottle of Blood Saved My Life. Was it Yours?</h1>
@@ -17,10 +18,11 @@ const Banner = () => {
             Blood donation is a vital part of worldwide healthcare. It relates to blood transfusion as a life-sustaining and life-saving procedure.
             </p>
             <div className="flex justify-evenly">
-             
+             <Link to='/register'> 
               <button className="btn btn-secondary text-white">Join as a Donor
               <FaArrowRightLong />
               </button>
+             </Link>
               <button className="btn btn-secondary text-white">Search Donors
               <FaArrowRightLong />
               </button>
