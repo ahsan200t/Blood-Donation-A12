@@ -1,7 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
 import navLogo from "../../assets/blood.jpg";
+import useAuth from "../../Hooks/useAuth";
 const Navbar = () => {
-  const user = true;
+ const {user, logOut}=useAuth();
   const navLinks = (
     <>
       <li>
@@ -77,7 +78,7 @@ const Navbar = () => {
                   <li>
                     <a>Dashboard</a>
                   </li>
-                  <li>
+                  <li onClick={logOut}>
                     <a>LogOut</a>
                   </li>
                 </ul>
