@@ -7,6 +7,7 @@ import { GrLogout } from "react-icons/gr";
 import nabLogo from '../../../assets/blood.jpg'
 import { IoCreateOutline } from "react-icons/io5";
 import { CiSquareQuestion } from "react-icons/ci";
+import { FaHome } from "react-icons/fa";
 
 const Sidebar = () => {
     const { logOut } = useAuth()
@@ -44,13 +45,13 @@ const Sidebar = () => {
   
         {/* Sidebar */}
         <div
-          className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-gray-100 w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
+          className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-[#D99904] w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
             isActive && '-translate-x-full'
           }  md:translate-x-0  transition duration-200 ease-in-out`}
         >
           <div>
             <div>
-              <div className='w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center bg-rose-100 mx-auto'>
+              <div className='w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center bg-gray-700 mx-auto'>
                 <Link to='/'>
                   <img
                     // className='hidden md:block'
@@ -71,10 +72,25 @@ const Sidebar = () => {
               <nav>
                 {/* My Donation Request Page */}
                 <NavLink
+                  to='/dashboard'
+                  end
+                  className={({ isActive }) =>
+                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-400   hover:text-gray-700 ${
+                      isActive ? 'bg-gray-400  text-gray-700' : 'text-gray-600'
+                    }`
+                  }
+                >
+                  <FaHome className='w-5 h-5' />
+                  <span className='mx-4 font-medium'>
+                   
+                    Home</span>
+                </NavLink>
+  
+                <NavLink
                   to='/dashboard/my-donation-requests'
                   className={({ isActive }) =>
-                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                      isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
+                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-400   hover:text-gray-700 ${
+                      isActive ? 'bg-gray-400  text-gray-700' : 'text-gray-600'
                     }`
                   }
                 >
@@ -86,8 +102,8 @@ const Sidebar = () => {
                 <NavLink
                   to='/dashboard/create-donation-request'
                   className={({ isActive }) =>
-                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                      isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
+                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-400   hover:text-gray-700 ${
+                      isActive ? 'bg-gray-400  text-gray-700' : 'text-gray-600'
                     }`
                   }
                 >
