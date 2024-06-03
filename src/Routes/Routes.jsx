@@ -6,6 +6,9 @@ import Blog from "../Pages/Blog/Blog";
 import Login from "../Pages/Login/Login";
 import Funding from "../Pages/Funding/Funding";
 import Register from "../Pages/Register/Register";
+import Dashboard from "../layouts/Dashboard";
+import MyDonationRequest from "../Pages/Dashboard/MyDonationRequest/MyDonationRequest";
+import CreateDonationRequest from "../Pages/Dashboard/CreateDonationRequest/CreateDonationRequest";
 const router = createBrowserRouter([
   {
     path:'/',
@@ -34,6 +37,20 @@ const router = createBrowserRouter([
         {
             path:'/register',
             element:<Register></Register>
+        }
+    ]
+  },
+  {
+    path:'/dashboard',
+    element:<Dashboard></Dashboard>,
+    children:[
+        {
+            path:'/dashboard/my-donation-requests',
+            element:<MyDonationRequest></MyDonationRequest>
+        },
+        {
+            path:'/dashboard/create-donation-request',
+            element:<CreateDonationRequest></CreateDonationRequest>
         }
     ]
   }

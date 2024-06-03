@@ -75,9 +75,11 @@ const Navbar = () => {
                   tabIndex={0}
                   className="dropdown-content z-[1] menu p-2 shadow bg-gray-700 text-white rounded-box w-52"
                 >
+                  <Link to='/dashboard'>
                   <li>
                     <a>Dashboard</a>
                   </li>
+                  </Link>
                   <li onClick={logOut}>
                     <a>LogOut</a>
                   </li>
