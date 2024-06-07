@@ -3,9 +3,6 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import districtData from '../../../public/district.json'
 import useAuth from "../../Hooks/useAuth";
-import registerPhoto from '../../assets/rp.jpg'
-import { FaUser } from "react-icons/fa6";
-import { data } from "autoprefixer";
 
 const Register = () => {
   const {createUser,updateUserProfile, user}= useAuth();
@@ -21,7 +18,7 @@ const Register = () => {
         formState: { errors },
       } = useForm();
       const onSubmit = (data) => {
-        const { email, password, photoURL, fullName, district, upazila, confirm_password } = data;
+        const { email, password, photoURL, fullName, district, upazila, confirm_password,blood } = data;
         if (password.length < 6) {
           setRegisterError("Password should be at least 6 characters or longer");
           return;
@@ -46,7 +43,7 @@ const Register = () => {
         }
         createUser(email, password)
         .then(()=>{
-          updateUserProfile(fullName, photoURL, email,district,upazila, confirm_password)
+          updateUserProfile(fullName, photoURL, email,district,upazila, confirm_password,blood)
           .then(()=>{
             navigate(location?.state || "/login");
           })
@@ -69,7 +66,7 @@ const Register = () => {
   return (
     <div className="bg-[#809A70] md:p-16 font-serif my-10">
      <div className="md:w-1/2 mx-auto">
-     <div className="flex flex-col  rounded-md  dark:bg-gray-50 dark:text-gray-800 mx-auto border border-[#1E677C] shadow-xl bg-">
+     <div className="flex flex-col bg-white rounded-md  dark:bg-gray-50 dark:text-gray-800 mx-auto border border-[#1E677C] shadow-xl bg-">
         <div className="hero-content flex-col">
           <div className="card shrink-0 w-full">
             <div className="mb-8 text-center text-black">
@@ -107,6 +104,28 @@ const Register = () => {
                   className="bg-transparent border-b-2 outline-none"
                   {...register("email", { required: true })}
                 />
+                {errors.email && (
+                  <span className="text-red-500">This field is required</span>
+                )}
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text font-bold font-lato">Blood Group</span>
+                </label>
+                  <select {...register("blood", { required: true })} className="p-3 border-b-2 bg-transparent outline-none">
+                    <option className="select-disabled">
+                      Select Your Blood Group
+                    </option>
+                    <option>A+</option>
+                    <option>A-</option>
+                    <option>B+</option>
+                    <option>B-</option>
+                    <option>AB+</option>
+                    <option>AB-</option>
+                    <option>O+</option>
+                    <option>O-</option>
+                  </select>
+                
                 {errors.email && (
                   <span className="text-red-500">This field is required</span>
                 )}
@@ -194,7 +213,7 @@ const Register = () => {
                 </button>
               </div>
               <div className="text-center mt-2">
-                <p className="text-white">
+                <p className="text-black">
                   Already Have An Account?{" "}
                   <Link
                     to="/login"

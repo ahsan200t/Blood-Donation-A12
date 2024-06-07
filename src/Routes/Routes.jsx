@@ -7,8 +7,8 @@ import Login from "../Pages/Login/Login";
 import Funding from "../Pages/Funding/Funding";
 import Register from "../Pages/Register/Register";
 import Dashboard from "../layouts/Dashboard";
-import MyDonationRequest from "../Pages/Dashboard/Volunteer/MyDonationRequest/MyDonationRequest";
-import CreateDonationRequest from "../Pages/Dashboard/Volunteer/MyDonationRequest/CreateDonationRequest/CreateDonationRequest";
+import MyDonationRequest from "../Pages/Dashboard/Donor/MyDonationRequest";
+import CreateDonationRequest from "../Pages/Dashboard/Donor/CreateDonationRequest";
 const router = createBrowserRouter([
   {
     path:'/',

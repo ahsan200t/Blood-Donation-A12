@@ -1,9 +1,12 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import districts from "../../../public/district.json";
 import useAuth from "../../Hooks/useAuth";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-const AddDonationRequest = ({handleSubmit}) => {
+import { TbFidgetSpinner } from "react-icons/tb";
+
+const AddDonationRequest = ({handleSubmit,loading}) => {
   const [districtId, setDistrictId] = useState("");
   const [upazila, setUpazila] = useState([]);
   const [upazilaId, setUpazilaId] = useState(null);
@@ -21,7 +24,8 @@ const AddDonationRequest = ({handleSubmit}) => {
     const upazilaId = e.target.value;
     setUpazilaId(upazilaId);
   };
-  console.log(startDate)
+  console.log(districtId)
+  console.log(upazilaId)
   return (
     <div className="w-full min-h-[calc(100vh-40px)] flex flex-col  text-gray-800 rounded-xl bg-gray-50">
       <form onSubmit={handleSubmit}>
@@ -51,6 +55,7 @@ const AddDonationRequest = ({handleSubmit}) => {
                 className="w-full px-4 py-3 border-rose-300 focus:outline-rose-500 rounded-md"
                 name="district"
               >
+                <option className="select-disabled">Select Your District</option>
                 {districts.map((district, index) => (
                   <option value={district.district_id} key={index}>
                     {district.district_name}
@@ -68,6 +73,7 @@ const AddDonationRequest = ({handleSubmit}) => {
                 className="w-full px-4 py-3 border-rose-300 focus:outline-rose-500 rounded-md"
                 name="upazila"
               >
+                <option className="select-disabled">Select Your Upazila</option>
                 {upazila.map((getUpazila, index) => (
                   <option value={getUpazila.upazila_id} key={index}>
                     {getUpazila.upazila_name}
@@ -171,7 +177,11 @@ const AddDonationRequest = ({handleSubmit}) => {
           type="submit"
           className="w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-rose-500"
         >
-          Request & Continue
+           {loading ? (
+                <TbFidgetSpinner className='animate-spin m-auto' />
+              ) : (
+                'Request  & Continew'
+              )}
         </button>
       </form>
     </div>
