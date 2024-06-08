@@ -9,6 +9,7 @@ import Register from "../Pages/Register/Register";
 import Dashboard from "../layouts/Dashboard";
 import MyDonationRequest from "../Pages/Dashboard/Donor/MyDonationRequest";
 import CreateDonationRequest from "../Pages/Dashboard/Donor/CreateDonationRequest";
+import DonationRequestDetails from "../Pages/DonationRequestDetails/DonationRequestDetails";
 const router = createBrowserRouter([
   {
     path:'/',
@@ -22,6 +23,12 @@ const router = createBrowserRouter([
             path:'/donation-request',
             element:<DonationRequest></DonationRequest>
         },
+        {
+            path:'/donation-request-details/:id',
+            element:<DonationRequestDetails></DonationRequestDetails>,
+            loader: ({ params }) =>
+                fetch(`http://localhost:5000/donation-details/${params.id}`)
+        },  
         {
             path:'/blog',
             element:<Blog></Blog>
