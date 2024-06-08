@@ -37,6 +37,7 @@ const CreateDonationRequest = () => {
     const hospital = form.hospital.value;
     const address = form.address.value;
     const message = form.message.value;
+    const status = "Pending"
     const donor = {
       name: user?.displayName,
       image: user?.photoURL,
@@ -55,6 +56,7 @@ const CreateDonationRequest = () => {
         address,
         message,
         donor,
+        status
       };
       await mutateAsync(requestData);
     } catch (error) {

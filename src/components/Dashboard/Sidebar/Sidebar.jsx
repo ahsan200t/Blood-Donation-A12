@@ -1,18 +1,23 @@
 import { useState } from "react";
-import useAuth from "../../../Hooks/useAuth";
 import { AiOutlineBars } from "react-icons/ai";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { FcSettings } from "react-icons/fc";
 import { GrLogout } from "react-icons/gr";
 import nabLogo from '../../../assets/blood.jpg'
 import { IoCreateOutline } from "react-icons/io5";
 import { CiSquareQuestion } from "react-icons/ci";
 import { FaHome } from "react-icons/fa";
+import useAuth from "../../../Hooks/useAuth";
 
 const Sidebar = () => {
-    const { logOut } = useAuth()
+    const { logOut,setUser } = useAuth()
     const [isActive, setActive] = useState(false)
-  
+    const navigate = useNavigate();
+     const handleLogOut=()=>{
+      logOut()
+      setUser(false)
+      navigate('/')
+     }
     // Sidebar Responsive Handler
     const handleToggle = () => {
       setActive(!isActive)
@@ -132,7 +137,7 @@ const Sidebar = () => {
               <span className='mx-4 font-medium'>Profile</span>
             </NavLink>
             <button
-              onClick={logOut}
+            onClick={handleLogOut}
               className='flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform'
             >
               <GrLogout className='w-5 h-5' />

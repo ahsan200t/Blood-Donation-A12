@@ -7,6 +7,7 @@ import Login from "../Pages/Login/Login";
 import Funding from "../Pages/Funding/Funding";
 import Register from "../Pages/Register/Register";
 import Dashboard from "../layouts/Dashboard";
+import PrivetRoute from '../Routes/PrivetRoute';
 import MyDonationRequest from "../Pages/Dashboard/Donor/MyDonationRequest";
 import CreateDonationRequest from "../Pages/Dashboard/Donor/CreateDonationRequest";
 import DonationRequestDetails from "../Pages/DonationRequestDetails/DonationRequestDetails";
@@ -25,9 +26,9 @@ const router = createBrowserRouter([
         },
         {
             path:'/donation-request-details/:id',
-            element:<DonationRequestDetails></DonationRequestDetails>,
+            element: <PrivetRoute><DonationRequestDetails></DonationRequestDetails></PrivetRoute> ,
             loader: ({ params }) =>
-                fetch(`http://localhost:5000/donation-details/${params.id}`)
+                fetch(`https://assignment-12-server-lovat.vercel.app/donation-details/${params.id}`)
         },  
         {
             path:'/blog',
