@@ -47,7 +47,7 @@ const AuthProvider = ({ children }) => {
 
   const logOut = async() => {
     setLoading(true)
-//    const {data}= await axios("https://assignment-12-server-lovat.vercel.app/logout", {withCredentials:true})
+//    const {data}= await axios("http://localhost:5000/logout", {withCredentials:true})
 //    console.log(data)
    setUser(false)
    

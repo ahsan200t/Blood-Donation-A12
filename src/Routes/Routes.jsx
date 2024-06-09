@@ -11,6 +11,8 @@ import PrivetRoute from '../Routes/PrivetRoute';
 import MyDonationRequest from "../Pages/Dashboard/Donor/MyDonationRequest";
 import CreateDonationRequest from "../Pages/Dashboard/Donor/CreateDonationRequest";
 import DonationRequestDetails from "../Pages/DonationRequestDetails/DonationRequestDetails";
+import DashboardHome from "../Pages/Dashboard/Donor/DashboardHome";
+import Edit from "../Pages/Dashboard/Donor/Edit";
 const router = createBrowserRouter([
   {
     path:'/',
@@ -28,7 +30,7 @@ const router = createBrowserRouter([
             path:'/donation-request-details/:id',
             element: <PrivetRoute><DonationRequestDetails></DonationRequestDetails></PrivetRoute> ,
             loader: ({ params }) =>
-                fetch(`https://assignment-12-server-lovat.vercel.app/donation-details/${params.id}`)
+                fetch(`http://localhost:5000/donation-details/${params.id}`)
         },  
         {
             path:'/blog',
@@ -52,6 +54,16 @@ const router = createBrowserRouter([
     path:'/dashboard',
     element:<Dashboard></Dashboard>,
     children:[
+        {
+            path:'/dashboard',
+            element:<DashboardHome></DashboardHome>
+        },
+        {
+          path:'/dashboard/edit/:id',
+          element:<Edit></Edit>,
+          loader: ({ params }) =>
+            fetch(`http://localhost:5000/update/${params.id}`)
+        },
         {
             path:'/dashboard/my-donation-requests',
             element:<MyDonationRequest></MyDonationRequest>

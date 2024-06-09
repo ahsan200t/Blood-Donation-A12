@@ -5,7 +5,7 @@ import { useEffect } from "react"
 
 
 export const axiosSecure = axios.create({
-  baseURL: "https://assignment-12-server-lovat.vercel.app",
+  baseURL: "http://localhost:5000",
   // withCredentials: true,
 })
 const useAxiosSecure = () => {

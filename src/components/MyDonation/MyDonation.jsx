@@ -1,4 +1,6 @@
 import PropTypes from 'prop-types'
+import { BsThreeDots } from 'react-icons/bs'
+import { Link } from 'react-router-dom'
 
 const MyDonation = ({ donation, refetch }) => {
   return (
@@ -46,7 +48,30 @@ const MyDonation = ({ donation, refetch }) => {
             aria-hidden='true'
             className='absolute inset-0 bg-green-200 opacity-50 rounded-full'
           ></span>
-          <span className='relative'>Update</span>
+          <span className='relative'>
+          <div className="dropdown dropdown-end">
+                      <div
+                        tabIndex={0}
+                        className="px-5 py-4 bg-white text-4xl"
+                      >
+                        <BsThreeDots />
+                      </div>
+                      <ul
+                        tabIndex={0}
+                        className="dropdown-content menu p-2 shadow-2xl bg-base-200 rounded-box w-52 z-10"
+                      >
+                        <Link className='mb-2'>
+                          <a>Update</a>
+                        </Link>
+                        <Link className='mb-2'>
+                          <a>Delete</a>
+                        </Link>
+                        <Link>
+                          <a>View</a>
+                        </Link>
+                      </ul>
+                    </div>
+          </span>
         </span>
         {/* Update Modal */}
       </td>

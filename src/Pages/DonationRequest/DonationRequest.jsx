@@ -8,7 +8,9 @@ const DonationRequest = () => {
     const { data: donationRequest = [], isLoading, refetch } = useQuery({
       queryKey: ["donationRequest"],
       queryFn: async () => {
-        const { data } = await axiosSecure.get(`/donation-request`);
+        const { data } = await axiosSecure.get(`/donation-request`,
+          // {withCredentials: true}
+        );
   
         return data;
       },

@@ -19,11 +19,11 @@ const Banner = () => {
             </p>
             <div className="flex justify-evenly">
              <Link to='/register'> 
-              <button className="btn btn-secondary text-white">Join as a Donor
+              <button className="btn btn-outline font-bold font-serif text-red-500">Join as a Donor
               <FaArrowRightLong />
               </button>
              </Link>
-              <button className="btn btn-secondary text-white">Search Donors
+              <button className="btn btn-outline text-green-600 font-bold font-serif">Search Donors
               <FaArrowRightLong />
               </button>
             </div>

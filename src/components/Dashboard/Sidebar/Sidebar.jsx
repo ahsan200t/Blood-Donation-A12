@@ -59,7 +59,6 @@ const Sidebar = () => {
               <div className='w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center bg-gray-700 mx-auto'>
                 <Link to='/'>
                   <img
-                    // className='hidden md:block'
                     src={nabLogo}
                     alt='logo'
                     className="h-8 w-auto mr-2"
@@ -71,8 +70,6 @@ const Sidebar = () => {
   
             {/* Nav Items */}
             <div className='flex flex-col justify-between flex-1 mt-6'>
-              {/* Conditional toggle button here.. */}
-  
               {/*  Menu Items */}
               <nav>
                 {/* My Donation Request Page */}

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import MyDonation from "../../../components/MyDonation/MyDonation";
 
 const MyDonationRequest = () => {
-  const { user } = useAuth();
+ const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const { data: donationRequest = [], isLoading, refetch } = useQuery({
     queryKey: ["donationRequest", user?.email],
@@ -59,31 +59,14 @@ const MyDonationRequest = () => {
                     >
                       Donation Status
                     </th>
-                    <div className="dropdown dropdown-end">
-                      <div
-                        tabIndex={0}
-                        className="px-5 py-4 bg-white text-gray-800 text-4xl"
-                      >
-                        <BsThreeDots />
-                      </div>
-                      <ul
-                        tabIndex={0}
-                        className="dropdown-content menu p-2 shadow-2xl bg-gray-700 text-white rounded-box w-36"
-                      >
-                        <Link>
-                          <a>Update</a>
-                        </Link>
-                        <Link>
-                          <a>Delete</a>
-                        </Link>
-                        <Link>
-                          <a>View</a>
-                        </Link>
-                      </ul>
-                    </div>
+                     <th scope="col"
+                      className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
+                      Action
+                     </th>
                   </tr>
                 </thead>
-                <tbody>{/* My Donation Request row data */}
+                <tbody>
+                {/* My Donation Request row data */}
                 {
                     donationRequest.map((donation)=><MyDonation key={donation._id} donation={donation} refetch={refetch}></MyDonation>)
                 }
