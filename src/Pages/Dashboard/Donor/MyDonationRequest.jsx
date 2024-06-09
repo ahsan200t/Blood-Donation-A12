@@ -2,8 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
 import { BeatLoader } from "react-spinners";
-import { BsThreeDots } from "react-icons/bs";
-import { Link } from "react-router-dom";
 import MyDonation from "../../../components/MyDonation/MyDonation";
 
 const MyDonationRequest = () => {
@@ -59,10 +57,6 @@ const MyDonationRequest = () => {
                     >
                       Donation Status
                     </th>
-                     <th scope="col"
-                      className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
-                      Action
-                     </th>
                   </tr>
                 </thead>
                 <tbody>

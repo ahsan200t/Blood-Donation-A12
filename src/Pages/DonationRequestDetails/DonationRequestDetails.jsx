@@ -14,7 +14,6 @@ const DonationRequestDetails = () => {
     message,
     donor
   } = details;
-  console.log(details);
   return (
     <div>
       <div className="text-center rounded-b-xl bg-gray-600 text-white p-10 md:p-20 mb-16">
@@ -68,9 +67,9 @@ const DonationRequestDetails = () => {
             className="modal modal-bottom sm:modal-middle"
           >
             <div className="modal-box">
-              <h3 className="font-bold text-lg">Hello!</h3>
+              <h3 className="font-bold text-lg">Are You Sure?</h3>
               <p className="py-4">
-                Press ESC key or click the button below to close
+               You Want To Donate!!!
               </p>
               <div className="modal-action justify-center border p-4 shadow-2xl">
                 <form method="dialog">

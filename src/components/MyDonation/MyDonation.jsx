@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types'
-import { BsThreeDots } from 'react-icons/bs'
-import { Link } from 'react-router-dom'
 
-const MyDonation = ({ donation, refetch }) => {
+
+const MyDonation = ({ donation }) => {
   return (
     <tr>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
@@ -34,47 +33,12 @@ const MyDonation = ({ donation, refetch }) => {
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
         <span className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight'>
-          <span
-            aria-hidden='true'
-            className='absolute inset-0 bg-red-200 opacity-50 rounded-full'
-          > </span>
-          <span className='relative'>{donation?.status}</span>
+          
+          <span className='relative btn btn-outline btn-xs text-red-600'>{donation?.status}</span>
         </span>
         
       </td>
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <span className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight'>
-          <span
-            aria-hidden='true'
-            className='absolute inset-0 bg-green-200 opacity-50 rounded-full'
-          ></span>
-          <span className='relative'>
-          <div className="dropdown dropdown-end">
-                      <div
-                        tabIndex={0}
-                        className="px-5 py-4 bg-white text-4xl"
-                      >
-                        <BsThreeDots />
-                      </div>
-                      <ul
-                        tabIndex={0}
-                        className="dropdown-content menu p-2 shadow-2xl bg-base-200 rounded-box w-52 z-10"
-                      >
-                        <Link className='mb-2'>
-                          <a>Update</a>
-                        </Link>
-                        <Link className='mb-2'>
-                          <a>Delete</a>
-                        </Link>
-                        <Link>
-                          <a>View</a>
-                        </Link>
-                      </ul>
-                    </div>
-          </span>
-        </span>
-        {/* Update Modal */}
-      </td>
+     
     </tr>
   )
 }

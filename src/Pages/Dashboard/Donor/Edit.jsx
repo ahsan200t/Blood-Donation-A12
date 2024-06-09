@@ -20,6 +20,10 @@ const Edit = () => {
     const hospital = form.hospital.value;
     const address = form.address.value;
     const message = form.message.value;
+    const donor ={
+      name: user.displayName,
+      email: user.email,
+    }
 
     const updatedDonationRequest = {
       recipient,
@@ -28,7 +32,8 @@ const Edit = () => {
       date,
       hospital,
       address,
-      message
+      message,
+      donor
       
     };
     fetch(`http://localhost:5000/update/${_id}`, {
