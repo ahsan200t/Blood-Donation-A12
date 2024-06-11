@@ -1,11 +1,16 @@
 /* eslint-disable react/prop-types */
 
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut,
+  updateProfile,
+} from "firebase/auth";
 import { app } from "../Firebase/Firebase.config";
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
-
-
 
 const auth = getAuth(app);
 
@@ -32,27 +37,37 @@ const AuthProvider = ({ children }) => {
     });
   };
 
+  // save user
+  const saveUser = async (user) => {
+    const currentUser = {
+      email: user?.email,
+      role: "donor",
+      status: "active",
+    };
+    const { data } = await axios.put("http://localhost:5000/user", currentUser);
+    return data;
+  };
+
   useEffect(() => {
-    const unSubscribe = onAuthStateChanged(auth, (user) => {
+    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
       setLoading(false);
       if (user) {
-        setUser(user);
-      }else{
-        setUser(false)
+        saveUser(currentUser);
+      } else {
+        setUser(false);
       }
     });
     return () => unSubscribe();
   }, [user]);
 
+  const logOut = async () => {
+    setLoading(true);
+    //    const {data}= await axios("http://localhost:5000/logout", {withCredentials:true})
+    //    console.log(data)
+    setUser(false);
 
-  const logOut = async() => {
-    setLoading(true)
-//    const {data}= await axios("http://localhost:5000/logout", {withCredentials:true})
-//    console.log(data)
-   setUser(false)
-   
     return signOut(auth);
-   
   };
   const userInfo = {
     user,
@@ -62,12 +77,9 @@ const AuthProvider = ({ children }) => {
     signInUser,
     logOut,
     updateUserProfile,
-
   };
   return (
-    <AuthContext.Provider value={userInfo}>
-        {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={userInfo}>{children}</AuthContext.Provider>
   );
 };
 
