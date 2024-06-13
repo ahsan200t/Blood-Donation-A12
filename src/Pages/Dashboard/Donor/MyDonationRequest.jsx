@@ -5,7 +5,7 @@ import { BeatLoader } from "react-spinners";
 import MyDonation from "../../../components/MyDonation/MyDonation";
 
 const MyDonationRequest = () => {
- const { user } = useAuth();
+ const { user,loading } = useAuth();
   const axiosSecure = useAxiosSecure();
   const { data: donationRequest = [], isLoading, refetch } = useQuery({
     queryKey: ["donationRequest", user?.email],
@@ -16,8 +16,7 @@ const MyDonationRequest = () => {
     },
   });
 
-  if (isLoading) return <BeatLoader margin={10} size={40} color="#36d7b7" />;
-  console.log(donationRequest);
+  if (loading || isLoading) return <BeatLoader margin={10} size={40} color="#36d7b7" />;
   return (
     <>
       <div className="container mx-auto px-4 sm:px-8">

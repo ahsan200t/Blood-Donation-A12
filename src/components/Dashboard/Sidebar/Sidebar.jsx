@@ -8,11 +8,15 @@ import { IoCreateOutline } from "react-icons/io5";
 import { CiSquareQuestion } from "react-icons/ci";
 import { FaHome } from "react-icons/fa";
 import useAuth from "../../../Hooks/useAuth";
+import useRole from "../../../Hooks/useRole";
+import MenuItem from "./MenuItem";
 
 const Sidebar = () => {
     const { logOut,setUser } = useAuth()
     const [isActive, setActive] = useState(false)
     const navigate = useNavigate();
+    const [role] = useRole();
+    console.log(role)
      const handleLogOut=()=>{
       logOut()
       setUser(false)
@@ -72,46 +76,22 @@ const Sidebar = () => {
             <div className='flex flex-col justify-between flex-1 mt-6'>
               {/*  Menu Items */}
               <nav>
+                {/* Dashboard Home Page */}
+                <MenuItem 
+                label='Home' 
+                address='/dashboard' 
+                icon={FaHome}  />
                 {/* My Donation Request Page */}
-                <NavLink
-                  to='/dashboard'
-                  end
-                  className={({ isActive }) =>
-                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-400   hover:text-gray-700 ${
-                      isActive ? 'bg-gray-400  text-gray-700' : 'text-gray-600'
-                    }`
-                  }
-                >
-                  <FaHome className='w-5 h-5' />
-                  <span className='mx-4 font-medium'>
-                   
-                    Home</span>
-                </NavLink>
-  
-                <NavLink
-                  to='/dashboard/my-donation-requests'
-                  className={({ isActive }) =>
-                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-400   hover:text-gray-700 ${
-                      isActive ? 'bg-gray-400  text-gray-700' : 'text-gray-600'
-                    }`
-                  }
-                >
-                  <CiSquareQuestion className='w-8 h-8' />
-                  <span className='mx-4 font-medium'>My Donation Requests</span>
-                </NavLink>
+                <MenuItem 
+                label='My Donation Requests' 
+                address='/dashboard/my-donation-requests' 
+                icon={CiSquareQuestion}  />
   
                 {/* Create Donation Request Page */}
-                <NavLink
-                  to='/dashboard/create-donation-request'
-                  className={({ isActive }) =>
-                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-400   hover:text-gray-700 ${
-                      isActive ? 'bg-gray-400  text-gray-700' : 'text-gray-600'
-                    }`
-                  }
-                >
-                  <IoCreateOutline className='w-8 h-8' />
-                  <span className='mx-4 font-medium'>Create Donation Request</span>
-                </NavLink>
+                <MenuItem 
+                label='Create Donation Request' 
+                address='/dashboard/create-donation-request' 
+                icon={IoCreateOutline}  />
                
               </nav>
             </div>
@@ -121,18 +101,11 @@ const Sidebar = () => {
             <hr />
   
             {/* Profile Menu */}
-            <NavLink
-              to='/dashboard/profile'
-              className={({ isActive }) =>
-                `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                  isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                }`
-              }
-            >
-              <FcSettings className='w-5 h-5' />
-  
-              <span className='mx-4 font-medium'>Profile</span>
-            </NavLink>
+            <MenuItem 
+                label='Profile' 
+                address='/dashboard/profile' 
+                icon={FcSettings}  />
+          
             <button
             onClick={handleLogOut}
               className='flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform'
