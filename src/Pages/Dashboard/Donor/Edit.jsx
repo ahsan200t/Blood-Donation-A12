@@ -7,7 +7,7 @@ import { useLoaderData } from "react-router-dom";
 const Edit = () => {
   const { user } = useAuth();
   const data = useLoaderData();
-  const {_id,recipient,district,upazila,requester,email,hospital,address,message,date}=data
+  const {_id,recipient,district,upazila,hospital,address,message,date}=data
 
 
   const handleUpdateDonationRequest = (e) => {

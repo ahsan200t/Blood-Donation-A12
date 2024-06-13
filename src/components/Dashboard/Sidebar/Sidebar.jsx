@@ -10,14 +10,19 @@ import { FaHome } from "react-icons/fa";
 import useAuth from "../../../Hooks/useAuth";
 import useRole from "../../../Hooks/useRole";
 import MenuItem from "./MenuItem";
+import HostMenu from "./DonorMenu";
+import Volunteer from "./VolunteerMenu";
+import AdminMenu from "./AdminMenu";
+import DonorMenu from "./DonorMenu";
 
 const Sidebar = () => {
-    const { logOut,setUser } = useAuth()
+    const { logOut,setUser,setLoading } = useAuth()
     const [isActive, setActive] = useState(false)
     const navigate = useNavigate();
     const [role] = useRole();
     console.log(role)
      const handleLogOut=()=>{
+      setLoading(true)
       logOut()
       setUser(false)
       navigate('/')
@@ -76,22 +81,9 @@ const Sidebar = () => {
             <div className='flex flex-col justify-between flex-1 mt-6'>
               {/*  Menu Items */}
               <nav>
-                {/* Dashboard Home Page */}
-                <MenuItem 
-                label='Home' 
-                address='/dashboard' 
-                icon={FaHome}  />
-                {/* My Donation Request Page */}
-                <MenuItem 
-                label='My Donation Requests' 
-                address='/dashboard/my-donation-requests' 
-                icon={CiSquareQuestion}  />
-  
-                {/* Create Donation Request Page */}
-                <MenuItem 
-                label='Create Donation Request' 
-                address='/dashboard/create-donation-request' 
-                icon={IoCreateOutline}  />
+              {role === 'donor' &&  <DonorMenu/>}
+              {role === 'volunteer' &&  <Volunteer/>}
+              {role === 'admin' &&  <AdminMenu/>}
                
               </nav>
             </div>
@@ -107,7 +99,7 @@ const Sidebar = () => {
                 icon={FcSettings}  />
           
             <button
-            onClick={handleLogOut}
+              onClick={handleLogOut}
               className='flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform'
             >
               <GrLogout className='w-5 h-5' />

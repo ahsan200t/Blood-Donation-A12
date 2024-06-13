@@ -77,7 +77,6 @@ const Register = () => {
     const upazilaId = e.target.value;
     setUpazilaId(upazilaId);
   };
-  console.log(user);
   return (
     <div className="bg-[#809A70] md:p-16 font-serif my-10">
       <div className="md:w-1/2 mx-auto">
