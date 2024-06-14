@@ -28,23 +28,21 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  const updateUserProfile = (fullName, photoURL, email,district,upazila,blood) => {
+  const updateUserProfile = (fullName, photoURL, email) => {
     setLoading(true);
     return updateProfile(auth.currentUser, {
       displayName: fullName,
       photoURL: photoURL,
       email: email,
-      district: district,
-      upazila: upazila,
-      blood: blood
     });
   };
 
   // save user
   const saveUser = async (user) => {
-    
     const currentUser = {
       email: user?.email,
+      photoURL: user?.photoURL,
+      fullName: user?.displayName,
       role: "donor",
       status: "active",
     };
@@ -58,9 +56,7 @@ const AuthProvider = ({ children }) => {
       setLoading(false);
       if (user) {
         saveUser(currentUser);
-      } else {
-        setUser(false);
-      }
+      } 
     });
     return () => unSubscribe();
   }, [user]);

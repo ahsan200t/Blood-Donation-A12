@@ -3,21 +3,21 @@ import useAuth from "../../../Hooks/useAuth";
 import useRole from "../../../Hooks/useRole";
 
 const Profile = () => {
-  const { user, loading,updateUserProfile } = useAuth();
+  const { user, loading } = useAuth();
   const [role, isLoading] = useRole();
   
   if (loading || isLoading)
     return <BeatLoader margin={10} size={40} color="#36d7b7" />;
   return (
-    <div className="flex justify-center items-center h-screen">
-      <div className="bg-white shadow-lg rounded-2xl w-3/5">
+    <div className=" ">
+      <div className="bg-white shadow-lg rounded-2xl ">
         <button className="bg-[#F43F5E] px-4 py-1 rounded-lg text-white cursor-pointer hover:bg-[#af4053] btn-xs">
           Edit Profile
         </button>
         <img
           alt="profile"
           src="https://i.ibb.co/BwJH0xC/profile.jpg"
-          className="w-full mb-4 rounded-t-lg h-36"
+          className="w-full mb-4 rounded-t-lg h-56"
         />
         <div className="flex flex-col items-center justify-center p-4 -mt-16">
           <a href="#" className="relative block">

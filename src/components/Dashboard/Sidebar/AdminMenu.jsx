@@ -13,7 +13,7 @@ const AdminMenu = () => {
                 icon={FaHome}  />
                 <MenuItem 
                 label='All Users'
-                address=' /dashboard/all-users'
+                address='/dashboard/all-users'
                 icon={FaUsers}
                 />
                 {/* My Donation Request Page */}
