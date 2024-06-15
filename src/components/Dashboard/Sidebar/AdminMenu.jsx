@@ -9,7 +9,7 @@ const AdminMenu = () => {
     <>
       <MenuItem 
                 label='Home' 
-                address='/dashboard' 
+                address='/dashboard/admin-home' 
                 icon={FaHome}  />
                 <MenuItem 
                 label='All Users'

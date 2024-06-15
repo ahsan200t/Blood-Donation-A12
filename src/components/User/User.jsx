@@ -4,8 +4,10 @@ import { BsThreeDots } from "react-icons/bs";
 import useAxiosSecure from "../../Hooks/useAxiosSecure/useAxiosSecure";
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
+import useAuth from "../../Hooks/useAuth";
 
 const User = ({singleUser,refetch}) => {
+  const {user: loggedInUser}= useAuth();
   const axiosSecure = useAxiosSecure();
   const {mutateAsync} = useMutation({
     mutationFn: async (user)=>{
@@ -21,6 +23,9 @@ const User = ({singleUser,refetch}) => {
     }
   })
   const handleBlock =async()=>{
+    if(loggedInUser.email === singleUser.email){
+      return toast.error("Action Not Allowed")
+    }
     const blockUser ={
       status: "Block"
     }
@@ -33,6 +38,9 @@ const User = ({singleUser,refetch}) => {
   }
   
   const handleMakeVolunteer =async()=>{
+    if(loggedInUser.email === singleUser.email){
+      return toast.error("Action Not Allowed")
+    }
     const volunteerUser ={
       role: 'volunteer'
     }
@@ -44,6 +52,9 @@ const User = ({singleUser,refetch}) => {
 
   }
   const handleMakeDonor =async()=>{
+    if(loggedInUser.email === singleUser.email){
+      return toast.error("Action Not Allowed")
+    }
     const donorUser ={
       role: 'donor'
     }
@@ -55,6 +66,9 @@ const User = ({singleUser,refetch}) => {
 
   }
   const handleMakeAdmin =async()=>{
+    if(loggedInUser.email === singleUser.email){
+      return toast.error("Action Not Allowed")
+    }
     const adminUser ={
       role: "admin"
     }

@@ -15,6 +15,10 @@ import DashboardHome from "../Pages/Dashboard/Donor/DashboardHome";
 import Edit from "../Pages/Dashboard/Donor/Edit";
 import Profile from "../Pages/Dashboard/Common/Profile";
 import AllUsers from "../Pages/Dashboard/Admin/AllUsers";
+import AdminDashboardHome from "../Pages/Dashboard/Admin/AdminDashboardHome";
+
+
+
 const router = createBrowserRouter([
   {
     path:'/',
@@ -60,6 +64,7 @@ const router = createBrowserRouter([
             path:'/dashboard',
             element:<DashboardHome></DashboardHome>
         },
+        
         {
           path:'/dashboard/edit/:id',
           element:<Edit></Edit>,
@@ -81,6 +86,11 @@ const router = createBrowserRouter([
         {
             path:'/dashboard/all-users',
             element:<AllUsers></AllUsers>
+        },
+        {
+            path:'/dashboard/admin-home',
+            element:<AdminDashboardHome/>,
+            loader: ()=> fetch("http://localhost:5000/donation-request")
         }
     ]
   }
