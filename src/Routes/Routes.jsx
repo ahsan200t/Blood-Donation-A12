@@ -16,6 +16,7 @@ import Edit from "../Pages/Dashboard/Donor/Edit";
 import Profile from "../Pages/Dashboard/Common/Profile";
 import AllUsers from "../Pages/Dashboard/Admin/AllUsers";
 import AdminDashboardHome from "../Pages/Dashboard/Admin/AdminDashboardHome";
+import AllDonationRequest from "../Pages/Dashboard/Admin/AllDonationRequest";
 
 
 
@@ -91,6 +92,10 @@ const router = createBrowserRouter([
             path:'/dashboard/admin-home',
             element:<AdminDashboardHome/>,
             loader: ()=> fetch("http://localhost:5000/donation-request")
+        },
+        {
+            path:'/dashboard/all-blood-donation-request',
+            element:<AllDonationRequest></AllDonationRequest>
         }
     ]
   }

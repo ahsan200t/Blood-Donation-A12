@@ -18,7 +18,12 @@ const DonationRequest = () => {
   return (
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
         {
-            donationRequest.map((donation =><DonationRequestCard key={donation._id} donation={donation}></DonationRequestCard>))
+            donationRequest.map((donation =><DonationRequestCard 
+              key={donation._id} 
+              donation={donation}
+              >
+
+              </DonationRequestCard>))
         }
       </div>
   );
