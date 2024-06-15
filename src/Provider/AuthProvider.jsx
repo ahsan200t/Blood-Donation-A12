@@ -41,8 +41,8 @@ const AuthProvider = ({ children }) => {
   const saveUser = async (user) => {
     const currentUser = {
       email: user?.email,
-      photoURL: user?.photoURL,
-      fullName: user?.displayName,
+      avatar: user?.photoURL,
+      name: user?.displayName,
       role: "donor",
       status: "active",
     };
@@ -63,8 +63,8 @@ const AuthProvider = ({ children }) => {
 
   const logOut = async () => {
     setLoading(true);
-    //    const {data}= await axios("http://localhost:5000/logout", {withCredentials:true})
-    //    console.log(data)
+       const {data}= await axios("http://localhost:5000/logout", {withCredentials:true})
+       console.log(data)
     setUser(false);
 
     return signOut(auth);

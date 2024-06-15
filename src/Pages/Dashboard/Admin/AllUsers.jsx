@@ -5,7 +5,7 @@ import { BeatLoader } from "react-spinners";
 import User from "../../../components/User/User";
 
 const AllUsers = () => {
-    const { user,loading } = useAuth();
+    const { loading } = useAuth();
   const axiosSecure = useAxiosSecure();
   const { data: allUsers = [], isLoading, refetch } = useQuery({
     queryKey: ["allUsers"],

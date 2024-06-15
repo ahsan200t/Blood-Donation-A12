@@ -1,18 +1,73 @@
 /* eslint-disable react/prop-types */
 
-import { Link } from "react-router-dom";
-import useAuth from "../../Hooks/useAuth";
 import { BsThreeDots } from "react-icons/bs";
+import useAxiosSecure from "../../Hooks/useAxiosSecure/useAxiosSecure";
+import { useMutation } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 
-const User = ({singleUser}) => {
-    const {user}= useAuth()
-    console.log(singleUser,user)
+const User = ({singleUser,refetch}) => {
+  const axiosSecure = useAxiosSecure();
+  const {mutateAsync} = useMutation({
+    mutationFn: async (user)=>{
+      const {data} = await axiosSecure.patch(`/users/update/${singleUser?.email}`,
+        user
+      )
+      return data;
+    },
+    onSuccess: data =>{
+      refetch()
+      console.log(data);
+      toast.success('Successfully Update User Role')
+    }
+  })
+  const handleBlock =async()=>{
+    const blockUser ={
+      status: "Block"
+    }
+    try {
+     await mutateAsync(blockUser)
+
+    } catch (err) {
+      toast.error(err.message)
+    }
+  }
+  
+  const handleMakeVolunteer =async()=>{
+    const volunteerUser ={
+      role: 'volunteer'
+    }
+    try {
+      await mutateAsync(volunteerUser)    
+    } catch (err) {
+      toast.error(err.message)
+    }
+
+  }
+  const handleMakeDonor =async()=>{
+    const donorUser ={
+      role: 'donor'
+    }
+    try {
+      await mutateAsync(donorUser)    
+    } catch (err) {
+      toast.error(err.message)
+    }
+
+  }
+  const handleMakeAdmin =async()=>{
+    const adminUser ={
+      role: "admin"
+    }
+    try {
+      await mutateAsync(adminUser)
+    } catch (err) {
+      toast.error(err.message)
+    }
+  }
     return (
         <tr>
         <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-          <p className='text-gray-900 whitespace-no-wrap'>
-           <img src={singleUser?.avatar} />
-          </p>
+           <img className='text-gray-900 whitespace-no-wrap' src={singleUser?.avatar} />
         </td>
         <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
           <p className='text-gray-900 whitespace-no-wrap'>{singleUser?.email}</p>
@@ -44,8 +99,11 @@ const User = ({singleUser}) => {
             <span
               aria-hidden='true'
               className='absolute inset-0 bg-green-700 opacity-60 rounded-lg'
-            ></span>
-            <span className='relative'><div className="dropdown dropdown-top dropdown-end">
+            >  
+            </span>
+            <span className='relative'>
+            
+            <div className="dropdown dropdown-top dropdown-end">
               <div tabIndex={0} className="text-4xl">
                 <BsThreeDots />
               </div>
@@ -53,27 +111,43 @@ const User = ({singleUser}) => {
                 tabIndex={0}
                 className="dropdown-content menu p-4 shadow-2xl bg-base-200 rounded-box w-40"
               >
-                <Link
-                  className="mb-2"
-                >
-                  <a className="flex items-center gap-2">
+                
+                    <>
+                    <button className="flex items-center gap-2">
                    
-                     Block
-                  </a>
-                </Link>
-                <Link className="mb-2">
-                  <a className="flex items-center gap-2">
+                   Unblock
+                   </button>
+                    </>
+                  
+                    <>
+                    <button onClick={handleBlock} className="flex items-center gap-2">
+                   
+                   Block
+                </button>
+                    </>
+                  
+              
+                 
+             
+                  
+                  
+               
+                
+                  <button onClick={handleMakeDonor} className="flex items-center gap-2">
+                    Make Donor
+                  </button>
+
+                  <button onClick={handleMakeVolunteer} className="flex items-center gap-2">
                     Make Volunteer
-                  </a>
-                </Link>
-                <Link>
-                  <a className="flex items-center gap-2">
+                  </button>
+                
+               
+                  <button onClick={handleMakeAdmin} className="flex items-center gap-2">
                      Make Admin
-                  </a>
-                </Link>
+                  </button>
+
               </ul>
             </div>
-
 
             </span>
           </span>
