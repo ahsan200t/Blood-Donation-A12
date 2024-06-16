@@ -1,31 +1,24 @@
 import { useState } from "react";
 import { AiOutlineBars } from "react-icons/ai";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { FcSettings } from "react-icons/fc";
 import { GrLogout } from "react-icons/gr";
 import nabLogo from '../../../assets/blood.jpg'
-import { IoCreateOutline } from "react-icons/io5";
-import { CiSquareQuestion } from "react-icons/ci";
-import { FaHome } from "react-icons/fa";
 import useAuth from "../../../Hooks/useAuth";
 import useRole from "../../../Hooks/useRole";
 import MenuItem from "./MenuItem";
-import HostMenu from "./DonorMenu";
 import Volunteer from "./VolunteerMenu";
 import AdminMenu from "./AdminMenu";
 import DonorMenu from "./DonorMenu";
 
 const Sidebar = () => {
-    const { logOut,setUser,setLoading } = useAuth()
+    const { logOut,setUser } = useAuth()
     const [isActive, setActive] = useState(false)
-    const navigate = useNavigate();
     const [role] = useRole();
-    console.log(role)
      const handleLogOut=()=>{
-      setLoading(true)
       logOut()
       setUser(false)
-      navigate('/')
+      Navigate('/login')
      }
     // Sidebar Responsive Handler
     const handleToggle = () => {

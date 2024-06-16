@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import navLogo from "../../assets/blood.jpg";
 import useAuth from "../../Hooks/useAuth";
 const Navbar = () => {
- const {user, logOut}=useAuth();
+  const { user, logOut } = useAuth();
   const navLinks = (
     <>
       <li>
@@ -75,10 +75,10 @@ const Navbar = () => {
                   tabIndex={0}
                   className="dropdown-content z-[1] menu p-2 shadow bg-gray-700 text-white rounded-box w-52"
                 >
-                  <Link to='/dashboard'>
-                  <li>
-                    <a>Dashboard</a>
-                  </li>
+                  <Link to="/dashboard">
+                    <li>
+                      <a>Dashboard</a>
+                    </li>
                   </Link>
                   <li onClick={logOut}>
                     <a>LogOut</a>

@@ -57,14 +57,14 @@ const Edit = () => {
         }
       });
   };
-  console.log(data)
+ 
   return (
     <div className=" border border-red-600 p-4 m-4 md:p-24 rounded-3xl">
       <h1 className="text-3xl font-extrabold text-center mb-8 font-serif">
         Update Your Donation Request
       </h1>
       <form onSubmit={handleUpdateDonationRequest}>
-        {/* Title and Description */}
+        
         <div className="md:flex">
           <div className="form-control md:w-1/2 ">
             <label className="label">

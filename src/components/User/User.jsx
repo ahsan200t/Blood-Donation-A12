@@ -126,12 +126,10 @@ const User = ({singleUser,refetch}) => {
                 className="dropdown-content menu p-4 shadow-2xl bg-base-200 rounded-box w-40"
               >
                 
-                    <>
-                    <button className="flex items-center gap-2">
+                   {status === 'active' &&  ( <button className="flex items-center gap-2">
                    
                    Unblock
-                   </button>
-                    </>
+                   </button>)}
                   
                     <>
                     <button onClick={handleBlock} className="flex items-center gap-2">

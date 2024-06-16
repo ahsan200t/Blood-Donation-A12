@@ -63,8 +63,10 @@ const AuthProvider = ({ children }) => {
 
   const logOut = async () => {
     setLoading(true);
-       const {data}= await axios("http://localhost:5000/logout", {withCredentials:true})
-       console.log(data)
+       const {data}= await axios("http://localhost:5000/logOut", 
+        // {withCredentials:true}
+      )
+      console.log(data)
     setUser(false);
 
     return signOut(auth);
