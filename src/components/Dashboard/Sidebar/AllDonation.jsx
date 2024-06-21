@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
 import { BsThreeDots } from 'react-icons/bs';
 import { FaEdit, FaEye, FaTrashAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';

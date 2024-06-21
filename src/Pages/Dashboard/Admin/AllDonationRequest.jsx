@@ -23,6 +23,7 @@ const AllDonationRequest = () => {
   });
   refetch();
   if (isLoading) return <BeatLoader margin={10} size={40} color="#36d7b7" />;
+  console.log(AllDonationRequest)
     return (
         <>
         <div className="flex gap-4 justify-center items-center text-3xl font-serif">

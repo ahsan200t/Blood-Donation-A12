@@ -180,7 +180,7 @@ const AddDonationRequest = ({handleSubmit,loading}) => {
            {loading ? (
                 <TbFidgetSpinner className='animate-spin m-auto' />
               ) : (
-                'Request  & Continew'
+                'Request  & Continue'
               )}
         </button>
       </form>

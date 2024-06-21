@@ -136,15 +136,7 @@ const User = ({singleUser,refetch}) => {
                    
                    Block
                 </button>
-                    </>
-                  
-              
-                 
-             
-                  
-                  
-               
-                
+                    </>                              
                   <button onClick={handleMakeDonor} className="flex items-center gap-2">
                     Make Donor
                   </button>

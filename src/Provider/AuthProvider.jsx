@@ -67,9 +67,8 @@ const AuthProvider = ({ children }) => {
         // {withCredentials:true}
       )
       console.log(data)
-    setUser(false);
-
-    return signOut(auth);
+      setUser(false);
+      return signOut(auth);  
   };
   const userInfo = {
     user,

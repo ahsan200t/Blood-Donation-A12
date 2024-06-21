@@ -18,6 +18,8 @@ import AllUsers from "../Pages/Dashboard/Admin/AllUsers";
 import AdminDashboardHome from "../Pages/Dashboard/Admin/AdminDashboardHome";
 import AllDonationRequest from "../Pages/Dashboard/Admin/AllDonationRequest";
 import AdminRoute from "./AdminRoute";
+import ContentManagement from "../Pages/Dashboard/Admin/ContentManagement";
+import AddBlog from "../Pages/Dashboard/Admin/AddBlog";
 
 const router = createBrowserRouter([
   {
@@ -134,6 +136,14 @@ const router = createBrowserRouter([
           </PrivetRoute>
         ),
       },
+      {
+        path:'/dashboard/content-management',
+        element:<ContentManagement></ContentManagement>
+      },
+      {
+        path:'/dashboard/content-management/add-blog',
+        element:<AddBlog></AddBlog>
+      }
     ],
   },
 ]);
