@@ -13,6 +13,7 @@ https://assignment-12-client-90a98.web.app
 4. Eligibility Check: Comprehensive guidelines to determine donor eligibility.
 5. Impact Tracking: Track the impact of your donations and see lives saved.
 6. Community Engagement: Foster a community of donors through forums and testimonials.
+7. Admin Dashboard 
 
 ## Technologies Used:
 ### Frontend: 
